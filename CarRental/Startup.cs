@@ -27,7 +27,7 @@ namespace CarRental
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<CarContext>(options =>
+            services.AddDbContext<CarRentalContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CarContext")));
         }
 

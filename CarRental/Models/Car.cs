@@ -10,7 +10,7 @@ namespace CarRental.Models
     public class Car
     {
         [Key]
-        public int CarId { get; set; }
+        public int Id { get; set; }
         [Column(TypeName ="varchar(250)")]
         public string Brand { get; set; }
         [Column(TypeName ="varchar(250)")]

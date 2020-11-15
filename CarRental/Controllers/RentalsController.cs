@@ -9,22 +9,22 @@ using CarRental.Models;
 
 namespace CarRental.Controllers
 {
-    public class CarsController : Controller
+    public class RentalsController : Controller
     {
         private readonly CarRentalContext _context;
 
-        public CarsController(CarRentalContext context)
+        public RentalsController(CarRentalContext context)
         {
             _context = context;
         }
 
-        // GET: Cars
+        // GET: Rentals
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.ToListAsync());
+            return View(await _context.Rentals.ToListAsync());
         }
 
-        // GET: Cars/Details/5
+        // GET: Rentals/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
-            var car = await _context.Cars
+            var rental = await _context.Rentals
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (car == null)
+            if (rental == null)
             {
                 return NotFound();
             }
 
-            return View(car);
+            return View(rental);
         }
 
-        // GET: Cars/Create
+        // GET: Rentals/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cars/Create
+        // POST: Rentals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Year,Mileage,Fuel,Seats,combisudan,about,ImgSrc")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,Rentee,CarId,Car,From,To")] Rental rental)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(car);
+                _context.Add(rental);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(car);
+            return View(rental);
         }
 
-        // GET: Cars/Edit/5
+        // GET: Rentals/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
-            var car = await _context.Cars.FindAsync(id);
-            if (car == null)
+            var rental = await _context.Rentals.FindAsync(id);
+            if (rental == null)
             {
                 return NotFound();
             }
-            return View(car);
+            return View(rental);
         }
 
-        // POST: Cars/Edit/5
+        // POST: Rentals/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,Mileage,Fuel,Seats,combisudan,about,ImgSrc")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Rentee,CarId,Car,From,To")] Rental rental)
         {
-            if (id != car.Id)
+            if (id != rental.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace CarRental.Controllers
             {
                 try
                 {
-                    _context.Update(car);
+                    _context.Update(rental);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CarExists(car.Id))
+                    if (!RentalExists(rental.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace CarRental.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(car);
+            return View(rental);
         }
 
-        // GET: Cars/Delete/5
+        // GET: Rentals/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
-            var car = await _context.Cars
+            var rental = await _context.Rentals
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (car == null)
+            if (rental == null)
             {
                 return NotFound();
             }
 
-            return View(car);
+            return View(rental);
         }
 
-        // POST: Cars/Delete/5
+        // POST: Rentals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var car = await _context.Cars.FindAsync(id);
-            _context.Cars.Remove(car);
+            var rental = await _context.Rentals.FindAsync(id);
+            _context.Rentals.Remove(rental);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CarExists(int id)
+        private bool RentalExists(int id)
         {
-            return _context.Cars.Any(e => e.Id == id);
+            return _context.Rentals.Any(e => e.Id == id);
         }
     }
 }

@@ -6,13 +6,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarRental.Models
 {
-    public class CarContext : DbContext
+    public class CarRentalContext : DbContext
     {
-        public CarContext(DbContextOptions<CarContext> options) : base(options)
+        public CarRentalContext(DbContextOptions<CarRentalContext> options) : base(options)
         {
 
         }
 
         public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Rental> Rentals { get; set; }
+
     }
 }

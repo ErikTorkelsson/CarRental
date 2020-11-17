@@ -26,6 +26,8 @@ namespace CarRental
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
+
 
             services.AddDbContext<CarRentalContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CarContext")));
@@ -50,12 +52,14 @@ namespace CarRental
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

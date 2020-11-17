@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Models;
-using CarRental.Models.ViewModels;
 
 namespace CarRental.Controllers
 {
@@ -44,11 +43,9 @@ namespace CarRental.Controllers
         }
 
         // GET: Rentals/Create
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            var createRentalViewModel = new CreateRentalViewModel() { Cars = await _context.Cars.ToListAsync() };
-
-            return View(createRentalViewModel);
+            return View();
         }
 
         // POST: Rentals/Create
@@ -60,17 +57,6 @@ namespace CarRental.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cars = await _context.Cars.ToListAsync();
-
-                Car car = cars.SingleOrDefault(car => car.Id == rental.CarId);
-
-                if (car == null)
-                {
-                    return NotFound();
-                }
-
-                rental.Car = car.Brand + " " + car.Model;
-
                 _context.Add(rental);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

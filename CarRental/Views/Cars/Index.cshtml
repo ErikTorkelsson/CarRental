@@ -6,25 +6,10 @@
 
 <h1>Index</h1>
 
-
-<div class="container">
-    @foreach (var car in Model)
-    {
-        <div class="card">
-            <img src=@car.ImgSrc class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@car.Brand  @car.Model </h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    }
-</div>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-@*<table class="table">
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -58,42 +43,41 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Brand)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mileage)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fuel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Seats)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.combisudan)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.about)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImgSrc)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.combisudan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.about)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgSrc)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
-</table>*@
+</table>

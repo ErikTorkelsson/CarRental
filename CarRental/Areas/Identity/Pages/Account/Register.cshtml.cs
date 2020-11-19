@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRental.Areas.Identity.Pages.Account
 {
@@ -68,9 +69,9 @@ namespace CarRental.Areas.Identity.Pages.Account
             public string Role { get; set; }
         }
         
-        public void OnGet(string returnUrl = null)
+        public async Task OnGet(string returnUrl = null)
         {
-            ViewData["roles"] = _roleManager.Roles.ToList();
+            ViewData["roles"] = await _roleManager.Roles.ToListAsync();
             ReturnUrl = returnUrl;
         }
 
@@ -109,8 +110,6 @@ namespace CarRental.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
-                    //return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)
                 {

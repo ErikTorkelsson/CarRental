@@ -12,6 +12,7 @@ namespace CarRental.Controllers
 {
     public class CarsController : Controller
     {
+        bool isRented = false;
         private readonly CarRentalContext _context;
 
         public CarsController(CarRentalContext context)
@@ -130,6 +131,7 @@ namespace CarRental.Controllers
             }
 
             return View(car);
+
         }
 
         // POST: Cars/Delete/5
@@ -137,10 +139,20 @@ namespace CarRental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var rentedCars = await _context.Rentals.FirstOrDefaultAsync(r => r.CarId == id);
             var car = await _context.Cars.FindAsync(id);
-            _context.Cars.Remove(car);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            if (rentedCars == null)
+            {
+                _context.Cars.Remove(car);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ModelState.AddModelError("Brand", "Bilen har en bokning");
+                return View(car);
+            }
         }
 
         private bool CarExists(int id)

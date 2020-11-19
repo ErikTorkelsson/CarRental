@@ -12,6 +12,7 @@ namespace CarRental.Models
         [Key]
         public int Id { get; set; }
         [Column(TypeName ="varchar(250)")]
+        [Required]
         public string Brand { get; set; }
         [Column(TypeName ="varchar(250)")]
         public string Model { get; set; }

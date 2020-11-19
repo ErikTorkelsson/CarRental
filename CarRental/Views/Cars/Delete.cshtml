@@ -66,7 +66,7 @@
             @Html.DisplayFor(model => model.ImgSrc)
         </dd>
     </dl>
-    
+    <span asp-validation-for="Brand" class="text-danger"></span>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

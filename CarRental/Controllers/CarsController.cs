@@ -150,7 +150,7 @@ namespace CarRental.Controllers
             }
             else
             {
-                ModelState.AddModelError("Brand", "Bilen har en bokning");
+                ModelState.AddModelError("Brand", "The car is rented");
                 return View(car);
             }
         }

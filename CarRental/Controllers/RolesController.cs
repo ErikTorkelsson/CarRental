@@ -9,6 +9,8 @@ namespace CarRental.Controllers
 {
     public class RolesController : Controller
     {
+        // Controller för att skapa olika roller
+
         RoleManager<IdentityRole> _rolemanager;
 
         public RolesController(RoleManager<IdentityRole> roleManager)

@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CarRental.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class RentalsController : Controller
     {
         private readonly CarRentalContext _context;
@@ -22,6 +21,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Rentals
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Rentals.ToListAsync());
@@ -54,8 +54,6 @@ namespace CarRental.Controllers
         }
 
         // POST: Rentals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Rentee,CarId,Car,From,To")] Rental rental)
@@ -81,6 +79,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Rentals/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,8 +96,6 @@ namespace CarRental.Controllers
         }
 
         // POST: Rentals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Rentee,CarId,Car,From,To")] Rental rental)
@@ -132,6 +129,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Rentals/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

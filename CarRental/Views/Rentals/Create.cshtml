@@ -18,19 +18,13 @@
                 <span asp-validation-for="Rental.Rentee" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rental.CarId" class="control-label"></label>
+                <label asp-for="Rental.CarId" class="control-label">Car</label>
                 <select class="form-control" asp-for="Rental.CarId"
                         asp-items="@(new SelectList(Model.Cars, "Id", "Model"))">
-                    <option>Select room</option>
+                    <option>Select Car</option>
                 </select>
-                @*<input asp-for="Rental.CarId" class="form-control" />
-                <span asp-validation-for="Rental.CarId" class="text-danger"></span>*@
             </div>
-            @*<div class="form-group">
-                <label asp-for="Rental.Car" class="control-label"></label>
-                <input asp-for="Rental.Car" class="form-control" />
-                <span asp-validation-for="Rental.Car" class="text-danger"></span>
-            </div>*@
+
             <div class="form-group">
                 <label asp-for="Rental.From" class="control-label"></label>
                 <input asp-for="Rental.From" class="form-control" />

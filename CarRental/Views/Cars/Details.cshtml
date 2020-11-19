@@ -14,35 +14,36 @@
         </thead>
         <tbody>
             <tr>
-                <td>Bilmärke</td>
+                <td>Brand</td>
                 <td>@Model.Brand</td>
             </tr>
             <tr>
-                <td>Modell</td>
+                <td>Model</td>
                 <td>@Model.Model</td>
             </tr>
             <tr>
-                <td>Tillverkningsår</td>
+                <td>Year</td>
                 <td>@Model.Year</td>
             </tr>
             <tr>
-                <td>Säten</td>
+                <td>Seats</td>
                 <td>@Model.Seats</td>
             </tr>
             <tr>
-                <td>Antal mil</td>
+                <td>Mileage</td>
                 <td>@Model.Mileage</td>
             </tr>
             <tr>
-                <td>Combi/sudan</td>
+                <td>Type</td>
                 <td>@Model.combisudan</td>
             </tr>
             <tr>
-                <td>Drivmedel</td>
+                <td>Fuel</td>
                 <td>@Model.Fuel</td>
             </tr>
             <tr>
                 <td>
+                    <a asp-controller="Rentals" asp-action="Create" class="btn btn-primary">Rent</a>
                     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
                     <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary">Delete</a>
                 </td>
@@ -58,68 +59,7 @@
     </table>
 </div>
 
-@*<h1>Details</h1>
 
-<div>
-    <h4>Car</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mileage)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mileage)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fuel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fuel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Seats)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Seats)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.combisudan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.combisudan)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.about)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.about)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImgSrc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImgSrc)
-        </dd>
-    </dl>
-</div>*@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

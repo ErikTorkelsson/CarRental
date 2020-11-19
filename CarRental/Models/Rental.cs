@@ -10,10 +10,10 @@ namespace CarRental.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string Rentee { get; set; }
-
+        [Required]
         public int CarId { get; set; }
-
         public string Car { get; set; }
 
         [DataType(DataType.Date)]

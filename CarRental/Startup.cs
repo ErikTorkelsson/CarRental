@@ -28,8 +28,6 @@ namespace CarRental
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<CarRentalContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("CarContextConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

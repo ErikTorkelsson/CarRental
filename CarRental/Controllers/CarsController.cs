@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CarRental.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRental.Controllers
 {
@@ -49,8 +50,6 @@ namespace CarRental.Controllers
         }
 
         // POST: Cars/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Brand,Model,Year,Mileage,Fuel,Seats,combisudan,about,ImgSrc")] Car car)
@@ -65,6 +64,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Cars/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,8 +81,6 @@ namespace CarRental.Controllers
         }
 
         // POST: Cars/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Year,Mileage,Fuel,Seats,combisudan,about,ImgSrc")] Car car)
@@ -116,6 +114,7 @@ namespace CarRental.Controllers
         }
 
         // GET: Cars/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
